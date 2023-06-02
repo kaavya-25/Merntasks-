@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Times New Roman;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: lightGray;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+     
+      margin-bottom: 5px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      background-color: Blue;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    .error {
+      color: red;
+      font-size: 12px;
+    }
+
+    button[type="submit"] {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <form id="registrationForm" onsubmit="validateForm(event)">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+      <span id="nameError" class="error"></span>
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+      <span id="emailError" class="error"></span>
+    </div>
+
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" required>
+      <span id="passwordError" class="error"></span>
+    </div>
+
+    <div>
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" required>
+      <span id="phoneError" class="error"></span>
+    </div>
+
+    <div>
+      <label for="gender">Gender:</label>
+      <select id="gender" required>
+        <option value="">Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <span id="genderError" class="error"></span>
+    </div>
+
+    <div>
+      <label>Languages:</label>
+      <input type="checkbox" id="english" name="language" value="english"> English
+      <input type="checkbox" id="spanish" name="language" value="spanish"> Spanish
+      <input type="checkbox" id="french" name="language" value="french"> French
+      <span id="languageError" class="error"></span>
+    </div>
+
+    <div>
+      <label for="zip">Zip Code:</label>
+      <input type="text" id="zip" required>
+      <span id="zipError" class="error"></span>
+    </div>
+
+    <div>
+      <label for="about">About:</label>
+      <textarea id="about" required></textarea>
+      <span id="aboutError" class="error"></span>
+    </div>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    function validateForm(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const password = document.getElementById('password');
+      const phone = document.getElementById('phone');
+      const gender = document.getElementById('gender');
+      const language = document.querySelectorAll('input[name="language"]:checked');
+      const zip = document.getElementById('zip');
+      const about = document.getElementById('about');
+
+      const nameError = document.getElementById('nameError');
+      const emailError = document.getElementById('emailError');
+      const passwordError = document.getElementById('passwordError');
+      const phoneError = document.getElementById('phoneError');
+      const genderError = document.getElementById('genderError');
+      const languageError = document.getElementById('languageError');
+      const zipError = document.getElementById('zipError');
+      const aboutError = document.getElementById('aboutError');
+
+      // Reset error messages
+      nameError.textContent = '';
+      emailError.textContent = '';
+      passwordError.textContent = '';
+      phoneError.textContent = '';
+      genderError.textContent = '';
+      languageError.textContent = '';
+      zipError.textContent = '';
+      aboutError.textContent = '';
+
+      // Name validation
+      if (name.value.trim() === '') {
+        nameError.textContent = 'Name is required';
+        name.focus();
+        return false;
+      }
+
+      // Email validation
+      if (email.value.trim() === '') {
+        emailError.textContent = 'Email is required';
+        email.focus();
+        return false;
+      }
+
+      // Password validation
+      if (password.value.trim() === '') {
+        passwordError.textContent = 'Password is required';
+        password.focus();
+        return false;
+      }
+
+      // Phone validation
+      if (phone.value.trim() === '') {
+        phoneError.textContent = 'Phone Number is required';
+        phone.focus();
+        return false;
+      }
+
+      // Gender validation
+      if (gender.value === '') {
+        genderError.textContent = 'Gender is required';
+        gender.focus();
+        return false;
+      }
+
+      // Language validation
+      if (language.length === 0) {
+        languageError.textContent = 'At least one language must be selected';
+        return false;
+      }
+
+      // Zip Code validation
+      if (zip.value.trim() === '') {
+        zipError.textContent = 'Zip Code is required';
+        zip.focus();
+        return false;
+      }
+
+      // About validation
+      if (about.value.trim() === '') {
+        aboutError.textContent = 'About is required';
+        about.focus();
+        return false;
+      }
+
+      // Form submission if all validations pass
+      alert('Form submitted successfully!');
+      return true;
+    }
+  </script>
+</body>
+</html>

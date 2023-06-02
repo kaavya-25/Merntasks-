@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <style>
+    .container {
+  margin-top: 50px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.custom-list {
+  list-style: none;
+  counter-reset: custom-counter;
+  padding-left: 0;
+}
+
+.custom-list li {
+  position: relative;
+  counter-increment: custom-counter;
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+
+.custom-list li::before {
+  content: counter(custom-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 18px;
+}
+
+.list-icon {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+   
+      <ul>
+      <li><span class="list-icon">&#9733;</span> Hummus</li>
+      <li><span class="list-icon">&#9733;</span> Pita</li>
+      <li><span class="list-icon">&#9733;</span> Green salad</li>
+      <li><span class="list-icon">&#9733;</span> Halloumi</li>
+     </ul>
+   
+  </div>
+</body>
+
+</html>
